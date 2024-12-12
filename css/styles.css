@@ -1,16 +1,20 @@
 /* styles.css */
 body {
     background-color: #f0f8ff; /* Light blue background */
-    color: #333; /* Dark gray text */
-    font-family: Arial, sans-serif; /* Clean font */
-    display: flex; /* Center content */
+    color:aqua; /* Dark gray text */
+    font-family: Arial, 'Times New Roman', Times, serif; /* Clean font */
+    display:inline ; /* Center content */
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
     margin: 0;
 }
 
+h2{
+    color:burlywood;
+}
 h1 {
+    color:#ff6347;
     font-size: 3rem; /* Larger text */
     text-shadow: 2px 2px #ccc; /* Subtle shadow */
 }
