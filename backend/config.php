@@ -1,12 +1,19 @@
+
 <?php
-// database connection
+// Database connection
 $db_host = "192.168.0.250";
 $db_user = "website";
 $db_pass = "website1";
 $db_name = "KAMPUNG_KITCHEN";
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if (!$conn) {// check connection
-    die("Connection failed: " . mysqli_connect_error());
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+// Query to fetch recipes
+$sql = "SELECT name, description, image_url, prep_time, cook_time, servings FROM recipe";
+$result = $conn->query($sql);
+?>
