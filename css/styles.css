@@ -11,8 +11,10 @@ body {
 }
 
 h2{
-    color:burlywood;
+    color:rgb(255, 233, 205);
 }
+
+
 h1 {
     color:#ff6347;
     font-size: 3rem; /* Larger text */

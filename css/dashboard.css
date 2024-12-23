@@ -1,5 +1,5 @@
 .my-custom{
-    background-color: rgb(242, 122, 234);
+    background-color: rgb(5, 8, 180);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: xx-large;
     font-style:normal;
@@ -8,6 +8,13 @@
 
 body{
     background-color: aquamarine;
+
+    background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
 }
 
 .square{
@@ -23,4 +30,9 @@ body{
 
 h1{
     color: bisque
+}
+
+h2{
+    color: rgb(159, 113, 80);
+    font-family: cursive ;        
 }
