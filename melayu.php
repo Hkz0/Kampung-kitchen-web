@@ -8,18 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <?php
 // Database connection
-$servername = "localhost"; // Replace with your server name
-$username = "root";        // Replace with your database username
-$password = "";            // Replace with your database password
-$dbname = "kampung_kitchen"; // Replace with your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'backend/config.php';
 
 // Get the ethnic_id from the query string (default to 1 for Melayu)
 $ethnic_id = isset($_GET['ethnic_id']) ? intval($_GET['ethnic_id']) : 1;

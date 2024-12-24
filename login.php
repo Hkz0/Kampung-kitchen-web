@@ -2,17 +2,7 @@
 session_start();
 
 // Database connection
-$servername = "192.168.0.250"; // Replace with your server name
-$username = "website";        // Replace with your database username
-$password = "website1";            // Replace with your database password
-$dbname = "KAMPUNG_KITCHEN"; // Replace with your database name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'backend/config.php';
 
 // Handle login
 if (isset($_POST['login'])) {
@@ -81,13 +71,19 @@ if (isset($_POST['guest'])) {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Register - Kampung Kitchen</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
 </head>
 <body>
     <div class="container mt-5">
@@ -110,6 +106,8 @@ if (isset($_POST['guest'])) {
                     <button type="submit" name="login" class="btn btn-primary mt-3">Login</button>
                 </form>
             </div>
+
+
 
             <div class="col-md-5">
                 <h4>Register</h4>

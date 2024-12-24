@@ -45,18 +45,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="row">
 <?php
 // Database connection
-$servername = "localhost"; // Replace with your server name
-$username = "root";        // Replace with your database username
-$password = "";            // Replace with your database password
-$dbname = "kampung_kitchen"; // Replace with your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'backend/config.php';
 
 // Get the recipe_id from the query string
 $recipe_id = isset($_GET['recipe_id']) ? intval($_GET['recipe_id']) : 0;

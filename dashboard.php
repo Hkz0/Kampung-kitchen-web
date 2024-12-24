@@ -53,17 +53,10 @@
     <div class="container mt-5">
         <div class="row">
             <?php
-            // Establishing database connection
-            $conn = new mysqli("192.168.0.250", "website", "website1", "KAMPUNG_KITCHEN");
-
-
-            // Checking connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+            include 'backend/config.php';
 
             // Query to fetch recipes
-            $sql = "SELECT * FROM recipe";
+            $sql = "SELECT * FROM Recipes ";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
