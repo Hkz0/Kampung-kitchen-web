@@ -56,7 +56,7 @@
             include 'backend/config.php';
 
             // Query to fetch recipes
-            $sql = "SELECT * FROM Recipes ";
+            $sql = "SELECT * FROM recipe ORDER BY RAND()";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
