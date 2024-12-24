@@ -48,11 +48,6 @@
     </form>
 </div>
 
-<div class="container text-center text-white d-flex flex-column justify-content-center h-100">
-    <h1>Welcome to My Website</h1>
-    <p>Bootstrap Full-Page Background Example</p>
-</div>
-
 
     <!-- Recipe Cards -->
     <div class="container mt-5">
