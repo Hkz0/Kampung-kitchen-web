@@ -2,10 +2,10 @@
 session_start();
 
 // Database connection
-$servername = "localhost"; // Replace with your server name
-$username = "root";        // Replace with your database username
-$password = "";            // Replace with your database password
-$dbname = "kampung_kitchen"; // Replace with your database name
+$servername = "192.168.0.250"; // Replace with your server name
+$username = "website";        // Replace with your database username
+$password = "website1";            // Replace with your database password
+$dbname = "KAMPUNG_KITCHEN"; // Replace with your database name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

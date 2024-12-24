@@ -40,12 +40,26 @@
        <h1>KAMPUNG KITCHEN HOMEPAGE</h1>
    </div>
 
+   <div class="container mt-5">
+    <h2 class="text-center mb-4">Discover Recipe</h2>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="container text-center text-white d-flex flex-column justify-content-center h-100">
+    <h1>Welcome to My Website</h1>
+    <p>Bootstrap Full-Page Background Example</p>
+</div>
+
+
     <!-- Recipe Cards -->
     <div class="container mt-5">
         <div class="row">
             <?php
             // Establishing database connection
-            $conn = new mysqli("localhost", "root", "", "kampung_kitchen");
+            $conn = new mysqli("192.168.0.250", "website", "website1", "KAMPUNG_KITCHEN");
 
 
             // Checking connection
