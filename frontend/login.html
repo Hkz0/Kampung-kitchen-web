@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <?php include 'includes/bootstrap.html'; ?>
+    <script src="includes/bootstrap.js"></script>
     <script src="login.js"></script>
 </head>
 <body>
+    <div id="navbar-container"></div>
     <h2>Login</h2>
     <form id="loginForm">
         <label for="username">Username:</label>
@@ -18,5 +21,28 @@
         <button type="button" onclick="login()">Login</button>
     </form>
     <div id="message"></div>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/api/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'account.html';
+                } else {
+                    document.getElementById('message').innerText = 'Login failed. Please try again.';
+                }
+            });
+        }
+    </script>
+    <script src="navbar.js"></script>
 </body>
 </html>

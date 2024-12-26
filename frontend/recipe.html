@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Details</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <?php include 'includes/bootstrap.html'; ?>
     <link href="styles.css" rel="stylesheet">
     <link href="navbar.css" rel="stylesheet">
+    <script src="includes/bootstrap.js"></script>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -32,10 +33,24 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="navbar.js"></script>
     <script src="recipe.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Load the navbar
+            $("#navbar-container").load("navbar.html", function() {
+                // Check login status and update navbar accordingly
+                $.get("/api/login-status", function(data) {
+                    if (data.loggedIn) {
+                        $("#navbar-container").find(".login-link").hide();
+                        $("#navbar-container").find(".logout-link").show();
+                    } else {
+                        $("#navbar-container").find(".login-link").show();
+                        $("#navbar-container").find(".logout-link").hide();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
