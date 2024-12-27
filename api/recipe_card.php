@@ -14,10 +14,15 @@ if ($result->num_rows > 0) {
             'recipe_id' => $row['recipe_id'],
             'name' => $row['name'],
             'description' => $row['description'],
-            'image_url' => $row['image_url'],
+            'instructions' => $row['instructions'],
+            'ingredients' => $row['ingredients'],
             'prep_time' => $row['prep_time'],
             'cook_time' => $row['cook_time'],
-            'servings' => $row['servings']
+            'servings' => $row['servings'],
+            'user_id' => $row['user_id'],
+            'created_at' => $row['created_at'],
+            'image_url' => $row['image_url'],
+            'ethnic_id' => $row['ethnic_id']
         ];
     }
 } 

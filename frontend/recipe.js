@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadRecipe();
 });
 
+// Load the recipe details
+// format the recipe page
 function loadRecipe() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipe_id');
@@ -11,10 +13,17 @@ function loadRecipe() {
         .then(data => {
             document.querySelector('.recipe-title').textContent = data.name;
             document.querySelector('.recipe-image').src = data.image_url;
+            document.getElementById('recipe-author').textContent = data.username;
             document.getElementById('prep-time').textContent = data.prep_time;
             document.getElementById('cook-time').textContent = data.cook_time;
             document.getElementById('servings').textContent = data.servings;
+            document.getElementById('ingredients-list').textContent = data.ingredients;
+            document.getElementById('instructions-container').textContent = data.instructions;
+            document.getElementById('ethnic-name').textContent = data.ethnic_name || 'Not specified';
+            const createdDate = new Date(data.created_at);
+            document.getElementById('created-at').textContent = createdDate.toLocaleDateString();
 
+            /* to be fixed
             const ingredientsList = document.getElementById('ingredients-list');
             data.ingredients.forEach(ingredient => {
                 const li = document.createElement('li');
@@ -29,6 +38,7 @@ function loadRecipe() {
                 instructionParagraph.textContent = instruction;
                 instructionsContainer.appendChild(instructionParagraph);
             });
+            */
         })
         .catch(error => {
             console.error('Error loading the recipe:', error);
