@@ -80,6 +80,8 @@ function displayUserRecipes(recipes) {
                     <h5 class="card-title">${recipe.title}</h5>
                     <p class="card-text">${recipe.description || ''}</p>
                     <a href="recipe.html?recipe_id=${recipe.id}" class="btn btn-primary">View Recipe</a>
+                    <button class="btn btn-warning mt-2" onclick="editRecipe(${recipe.id})">Edit</button>
+                    <button class="btn btn-danger mt-2" onclick="deleteRecipe(${recipe.id})">Delete</button>
                 </div>
             </div>
         `;
@@ -205,4 +207,104 @@ async function changePassword() {
         console.error('Error changing password:', error);
         alert('Error changing password. Please try again.');
     }
+}
+
+function editRecipe(recipeId) {
+    // Fetch the recipe details and populate the form
+    fetch(`../api/recipe_details.php?recipe_id=${recipeId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('edit-recipe-id').value = data.recipe_id;
+            document.getElementById('edit-name').value = data.name;
+            document.getElementById('edit-description').value = data.description;
+            document.getElementById('edit-instructions').value = data.instructions;
+            document.getElementById('edit-ingredients').value = data.ingredients;
+            document.getElementById('edit-prep-time').value = data.prep_time;
+            document.getElementById('edit-cook-time').value = data.cook_time;
+            document.getElementById('edit-servings').value = data.servings;
+            document.getElementById('edit-image-url').value = data.image_url;
+            document.getElementById('edit-ethnic-id').value = data.ethnic_id;
+
+            const modal = new bootstrap.Modal(document.getElementById('editRecipeModal'));
+            modal.show();
+        })
+        .catch(error => {
+            console.error('Error loading recipe details:', error);
+        });
+}
+
+document.getElementById('save-recipe-btn').addEventListener('click', async function() {
+    const recipeId = document.getElementById('edit-recipe-id').value;
+    const name = document.getElementById('edit-name').value;
+    const description = document.getElementById('edit-description').value;
+    const instructions = document.getElementById('edit-instructions').value;
+    const ingredients = document.getElementById('edit-ingredients').value;
+    const prepTime = document.getElementById('edit-prep-time').value;
+    const cookTime = document.getElementById('edit-cook-time').value;
+    const servings = document.getElementById('edit-servings').value;
+    const imageUrl = document.getElementById('edit-image-url').value;
+    const ethnicId = document.getElementById('edit-ethnic-id').value;
+
+    try {
+        const response = await fetch('../api/edit_recipe.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                recipe_id: recipeId,
+                name,
+                description,
+                instructions,
+                ingredients,
+                prep_time: parseInt(prepTime),
+                cook_time: parseInt(cookTime),
+                servings: parseInt(servings),
+                image_url: imageUrl,
+                ethnic_id: ethnicId ? parseInt(ethnicId) : null
+            }),
+            credentials: 'include'
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert('Recipe updated successfully');
+            loadUserRecipes();
+            bootstrap.Modal.getInstance(document.getElementById('editRecipeModal')).hide();
+        } else {
+            alert('Failed to update recipe: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error updating recipe:', error);
+        alert('Error updating recipe. Please try again.');
+    }
+});
+
+function deleteRecipe(recipeId) {
+    if (!confirm('Are you sure you want to delete this recipe?')) {
+        return;
+    }
+
+    fetch('../api/delete_recipe.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ recipe_id: recipeId }),
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Recipe deleted successfully');
+            loadUserRecipes(); // Refresh the list of recipes
+        } else {
+            alert('Failed to delete recipe: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting recipe:', error);
+        alert('Error deleting recipe. Please try again.');
+    });
 } 
