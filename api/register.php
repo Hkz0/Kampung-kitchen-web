@@ -8,26 +8,12 @@ header('Content-Type: application/json');
 // Include database connection
 require_once '../config/connect.php';
 
-// Create users table if it doesn't exist
-$createTable = "CREATE TABLE IF NOT EXISTS users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL
-)";
-
-if (!$conn->query($createTable)) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Failed to create users table: ' . $conn->error
-    ]);
-    exit;
-}
 
 // Get and validate input
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-if (!$data || !isset($data['username']) || !isset($data['password'])) {
+if (!$data || !isset($data['username']) || !isset($data['password']) || !isset($data['email'])) {
     echo json_encode([
         'success' => false,
         'message' => 'Invalid input data'
@@ -37,6 +23,7 @@ if (!$data || !isset($data['username']) || !isset($data['password'])) {
 
 $username = $data['username'];
 $password = password_hash($data['password'], PASSWORD_BCRYPT);
+$email = $data['email'];
 
 // Check for existing username
 $check_stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
@@ -61,7 +48,7 @@ if ($check_stmt->num_rows > 0) {
 }
 
 // Insert new user
-$stmt = $conn->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
+$stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
 if (!$stmt) {
     echo json_encode([
         'success' => false,
@@ -70,7 +57,7 @@ if (!$stmt) {
     exit;
 }
 
-$stmt->bind_param("ss", $username, $password);
+$stmt->bind_param("sss", $username, $email, $password);
 
 if ($stmt->execute()) {
     echo json_encode([

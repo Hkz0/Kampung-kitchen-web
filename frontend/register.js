@@ -2,6 +2,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
     event.preventDefault();
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
 
     // Basic validation
     if (!username || !password) {
@@ -15,7 +16,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ username, password, email })
         });
 
         const responseText = await response.text();

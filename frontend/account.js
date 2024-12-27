@@ -29,16 +29,31 @@ function displayUserData(user) {
     document.getElementById('edit-email').value = user.email;
 }
 
-async function loadUserRecipes(userId) {
+async function loadUserRecipes() {
     try {
-        const response = await fetch(`../api/user_recipes.php?user_id=${userId}`);
+        const response = await fetch('../api/user_recipes.php', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
 
         if (data.success) {
             displayUserRecipes(data.recipes);
+        } else {
+            throw new Error(data.message || 'Failed to load recipes');
         }
     } catch (error) {
         console.error('Error loading user recipes:', error);
+        document.getElementById('user-recipes').innerHTML = 
+            '<p class="alert alert-danger">Unable to load recipes. Please try again later.</p>';
     }
 }
 
@@ -46,31 +61,31 @@ function displayUserRecipes(recipes) {
     const container = document.getElementById('user-recipes');
     container.innerHTML = '';
 
-    if (recipes.length === 0) {
-        container.innerHTML = '<p>No recipes posted yet.</p>';
+    if (!recipes || recipes.length === 0) {
+        container.innerHTML = '<p class="text-center">No recipes posted yet.</p>';
         return;
     }
 
     recipes.forEach(recipe => {
-        const recipeCard = createRecipeCard(recipe);
-        container.appendChild(recipeCard);
-    });
-}
-
-function createRecipeCard(recipe) {
-    const col = document.createElement('div');
-    col.className = 'col-md-4 mb-3';
-    col.innerHTML = `
-        <div class="card">
-            <img src="${recipe.image_url}" class="card-img-top" alt="${recipe.title}">
-            <div class="card-body">
-                <h5 class="card-title">${recipe.title}</h5>
-                <p class="card-text">${recipe.description}</p>
-                <a href="recipe.html?id=${recipe.id}" class="btn btn-primary">View Recipe</a>
+        const col = document.createElement('div');
+        col.className = 'col-md-4 mb-3';
+        
+        col.innerHTML = `
+            <div class="card h-100">
+                <img src="${recipe.image_url || 'placeholder.jpg'}" 
+                     class="card-img-top" 
+                     alt="${recipe.title}"
+                     onerror="this.src='placeholder.jpg'">
+                <div class="card-body">
+                    <h5 class="card-title">${recipe.title}</h5>
+                    <p class="card-text">${recipe.description || ''}</p>
+                    <a href="recipe.html?recipe_id=${recipe.id}" class="btn btn-primary">View Recipe</a>
+                </div>
             </div>
-        </div>
-    `;
-    return col;
+        `;
+        
+        container.appendChild(col);
+    });
 }
 
 function setupEventListeners() {
@@ -95,6 +110,34 @@ function setupEventListeners() {
     });
 
     savePasswordBtn.addEventListener('click', changePassword);
+
+    // Add logout handler
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                const response = await fetch('../api/logout.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    window.location.href = 'logout_success.html';
+                } else {
+                    alert('Logout failed: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error during logout:', error);
+                alert('Error during logout. Please try again.');
+            }
+        });
+    }
 }
 
 async function saveProfileChanges() {

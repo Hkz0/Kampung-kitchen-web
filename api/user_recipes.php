@@ -1,36 +1,52 @@
 <?php
 session_start();
+header('Content-Type: application/json');
+
 include '../config/connect.php';
 
-$response = ['success' => false];
-
 if (!isset($_SESSION['user_id'])) {
-    $response['message'] = 'Not logged in';
-    echo json_encode($response);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Not authenticated'
+    ]);
     exit;
 }
 
-$user_id = $_GET['user_id'] ?? $_SESSION['user_id'];
+try {
+    $user_id = $_SESSION['user_id'];
+    
+    // Update the query to match your database structure
+    $stmt = $conn->prepare("SELECT recipe_id, name as title, description, image_url 
+                           FROM recipe 
+                           WHERE user_id = ?
+                           ORDER BY created_at DESC");
+    
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    $recipes = [];
+    while ($row = $result->fetch_assoc()) {
+        $recipes[] = [
+            'id' => $row['recipe_id'],
+            'title' => $row['title'],
+            'description' => $row['description'],
+            'image_url' => $row['image_url']
+        ];
+    }
+    
+    echo json_encode([
+        'success' => true,
+        'recipes' => $recipes
+    ]);
 
-$stmt = $conn->prepare("SELECT id, title, description, image_url FROM recipes WHERE user_id = ?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-$recipes = [];
-while ($row = $result->fetch_assoc()) {
-    $recipes[] = [
-        'id' => $row['id'],
-        'title' => $row['title'],
-        'description' => $row['description'],
-        'image_url' => $row['image_url']
-    ];
+} catch (Exception $e) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Server error occurred'
+    ]);
 }
 
-$response['success'] = true;
-$response['recipes'] = $recipes;
-
-echo json_encode($response);
 $stmt->close();
 $conn->close();
 ?> 
