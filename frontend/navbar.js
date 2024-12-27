@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadNavbar();
-    // We need to wait for the navbar to load before setting up the logout handler
     loadNavbar().then(() => {
-        setupLogoutHandler();
+        checkUserLoginStatus();
     });
 });
 
@@ -16,5 +14,26 @@ function loadNavbar() {
         .catch(error => {
             console.error('Error loading the navbar:', error);
         });
+}
+
+async function checkUserLoginStatus() {
+    try {
+        const response = await fetch('../api/check_session.php');
+        const data = await response.json();
+        
+        if (data.logged_in) {
+            document.getElementById('upload-recipe-link').style.display = 'block';
+            document.getElementById('my-account-link').style.display = 'block';
+            document.getElementById('login-link').style.display = 'none';
+            document.getElementById('register-link').style.display = 'none';
+        } else {
+            document.getElementById('upload-recipe-link').style.display = 'none';
+            document.getElementById('my-account-link').style.display = 'none';
+            document.getElementById('login-link').style.display = 'block';
+            document.getElementById('register-link').style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error checking user login status:', error);
+    }
 }
 
