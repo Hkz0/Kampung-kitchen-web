@@ -2,16 +2,13 @@
 include '../config/connect.php'; // Database connection
 
 header('Content-Type: application/json');
-// Query to fetch recipes
-$ethnic_id = $_GET['ethnic_id'] ?? null;
 
-// Modified query to join with ethnic table to get ethnic name and description
-$stmt = $conn->prepare("SELECT r.*, e.ethnic_name, e.desc as ethnic_description 
-                         FROM recipe r 
-                         INNER JOIN ethnic e ON r.ethnic_id = e.ethnic_id 
-                         WHERE r.ethnic_id = ? 
-                         ORDER BY RAND()");
-$stmt->bind_param("i", $ethnic_id);
+$searchTerm = $_GET['search'] ?? '';
+
+// Prepare the SQL statement to prevent SQL injection
+$stmt = $conn->prepare("SELECT * FROM recipe WHERE name LIKE ? OR description LIKE ? ORDER BY RAND()");
+$searchTerm = "%$searchTerm%"; // Add wildcards for LIKE
+$stmt->bind_param("ss", $searchTerm, $searchTerm);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -31,9 +28,7 @@ if ($result->num_rows > 0) {
             'user_id' => $row['user_id'],
             'created_at' => $row['created_at'],
             'image_url' => $row['image_url'],
-            'ethnic_id' => $row['ethnic_id'],
-            'ethnic_name' => $row['ethnic_name'],
-            'ethnic_description' => $row['ethnic_description']
+            'ethnic_id' => $row['ethnic_id']
         ];
     }
 } 
@@ -42,5 +37,4 @@ echo json_encode($recipes);
 
 $stmt->close();
 $conn->close();
-
-?>
+?> 
