@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function fetchRecipes() {
-    const response = await fetch('../api/recipe_card.php');
+    const response = await fetch('http://192.168.0.251/api/recipe_card.php');
     const data = await response.json();
     displayRecipes(data);
 }
 
 async function searchRecipes(searchTerm) {
-    const response = await fetch(`../api/search_recipes.php?search=${encodeURIComponent(searchTerm)}`);
+    const response = await fetch(`http://192.168.0.251/api/search_recipes.php?search=${encodeURIComponent(searchTerm)}`);
     const data = await response.json();
     displayRecipes(data);
 }

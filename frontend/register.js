@@ -11,7 +11,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
     }
 
     try {
-        const response = await fetch('../api/register.php', {
+        const response = await fetch('http://192.168.0.251/api/register.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

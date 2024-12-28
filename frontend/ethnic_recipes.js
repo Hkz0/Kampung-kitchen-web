@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ethnicId = urlParams.get('ethnic_id');
 
     if (ethnicId) {
-        fetch(`../api/ethnic_recipe_cards.php?ethnic_id=${ethnicId}`)
+        fetch(`http://192.168.0.251/api/ethnic_recipe_cards.php?ethnic_id=${ethnicId}`)
             .then(response => response.json())
             .then(data => {
                 // Display ethnic name and description
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function searchRecipes(searchTerm) {
-    const response = await fetch(`../api/search_recipes.php?search=${encodeURIComponent(searchTerm)}`);
+    const response = await fetch(`http://192.168.0.251/api/search_recipes.php?search=${encodeURIComponent(searchTerm)}`);
     const data = await response.json();
     displayRecipes(data);
 }

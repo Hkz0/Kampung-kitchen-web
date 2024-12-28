@@ -18,7 +18,7 @@ function loadNavbar() {
 
 async function checkUserLoginStatus() {
     try {
-        const response = await fetch('../api/check_session.php');
+        const response = await fetch('http://192.168.0.251/api/check_session.php');
         const data = await response.json();
         
         if (data.logged_in) {

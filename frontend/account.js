@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadUserData() {
     try {
-        const response = await fetch('../api/user_data.php');
+        const response = await fetch('192.168.251/api/user_data.php');
         const data = await response.json();
 
         if (data.success) {
@@ -31,7 +31,7 @@ function displayUserData(user) {
 
 async function loadUserRecipes() {
     try {
-        const response = await fetch('../api/user_recipes.php', {
+        const response = await fetch('192.168.0.251/api/user_recipes.php', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -119,7 +119,7 @@ function setupEventListeners() {
         logoutBtn.addEventListener('click', async function(event) {
             event.preventDefault();
             try {
-                const response = await fetch('../api/logout.php', {
+                const response = await fetch('192.168.0.251/api/logout.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -147,7 +147,7 @@ async function saveProfileChanges() {
     const email = document.getElementById('edit-email').value;
 
     try {
-        const response = await fetch('../api/update_profile.php', {
+        const response = await fetch('192.168.0.251/api/update_profile.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ async function changePassword() {
     }
 
     try {
-        const response = await fetch('../api/change_password.php', {
+        const response = await fetch('192.168.0.251/api/change_password.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -246,7 +246,7 @@ document.getElementById('save-recipe-btn').addEventListener('click', async funct
     const ethnicId = document.getElementById('edit-ethnic-id').value;
 
     try {
-        const response = await fetch('../api/edit_recipe.php', {
+        const response = await fetch('http://192.168.0.251/api/edit_recipe.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -286,7 +286,7 @@ function deleteRecipe(recipeId) {
         return;
     }
 
-    fetch('../api/delete_recipe.php', {
+    fetch('http://192.168.0.251/api/delete_recipe.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
