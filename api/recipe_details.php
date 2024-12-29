@@ -1,7 +1,6 @@
 <?php
-include '../config/connect.php'; // Database connection
-
-header('Content-Type: application/json');
+include 'cors_headers.php';
+include '../config/connect.php';
 
 $recipe_id = $_GET['recipe_id'];
 

@@ -1,4 +1,4 @@
-import { BASE_URL } from "config.js";
+import { BASE_URL } from "./config.js";
 document.getElementById('register-form').addEventListener('submit', async function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;

@@ -1,10 +1,9 @@
+import { BASE_URL } from "./config.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     loadUserData();
     setupEventListeners();
 });
-
-import { BASE_URL } from "config.js";
 
 async function loadUserData() {
     try {

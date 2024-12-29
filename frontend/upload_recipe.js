@@ -1,4 +1,4 @@
-import { BASE_URL } from "config.js";
+import { BASE_URL } from "./config.js";
 document.getElementById('upload-recipe-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 

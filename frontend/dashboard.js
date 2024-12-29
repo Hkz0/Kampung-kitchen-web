@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-import { BASE_URL } from "config.js";
+import { BASE_URL } from "./config.js";
 
 async function fetchRecipes() {
     const response = await fetch(`${BASE_URL}recipe_card.php`);

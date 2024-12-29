@@ -1,4 +1,4 @@
-import { BASE_URL } from "config.js";
+import { BASE_URL } from "./config.js";
 async function checkSession() {
     try {
         const response = await fetch(`${BASE_URL}check_session.php`);

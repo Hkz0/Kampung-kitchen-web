@@ -1,4 +1,4 @@
-import { BASE_URL } from "config.js";
+import { BASE_URL } from "./config.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);

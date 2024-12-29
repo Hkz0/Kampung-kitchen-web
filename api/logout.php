@@ -1,4 +1,5 @@
 <?php
+include 'cors_headers.php';
 session_start();
 session_destroy();
 
