@@ -1,5 +1,5 @@
 <?php
-include 'cors_headers.php';
+require_once __DIR__ . '/cors_headers.php';
 // At the very top of register.php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
