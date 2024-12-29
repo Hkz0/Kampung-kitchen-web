@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://http://across-phantom.gl.at.ply.gg:51550/kampungKitchen/api/';
+export const BASE_URL = 'http://across-phantom.gl.at.ply.gg:51550/kampungKitchen/api/';
