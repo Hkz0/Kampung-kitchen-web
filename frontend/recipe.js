@@ -1,3 +1,4 @@
+import { BASE_URL } from "config.js";
 document.addEventListener('DOMContentLoaded', () => {
     loadRecipe();
 });
@@ -8,7 +9,7 @@ function loadRecipe() {
     const urlParams = new URLSearchParams(window.location.search);
     const recipeId = urlParams.get('recipe_id');
 
-    fetch(`http://192.168.0.251/api/recipe_details.php?recipe_id=${recipeId}`)
+    fetch(`${BASE_URL}recipe_details.php?recipe_id=${recipeId}`)
         .then(response => response.json())
         .then(data => {
             document.querySelector('.recipe-title').textContent = data.name;

@@ -1,3 +1,4 @@
+import { BASE_URL } from "config.js";
 document.getElementById('register-form').addEventListener('submit', async function(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
@@ -11,7 +12,7 @@ document.getElementById('register-form').addEventListener('submit', async functi
     }
 
     try {
-        const response = await fetch('http://192.168.0.251/api/register.php', {
+        const response = await fetch(`${BASE_URL}register.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

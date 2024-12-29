@@ -1,3 +1,4 @@
+import { BASE_URL } from "config.js";
 document.addEventListener('DOMContentLoaded', () => {
     loadNavbar().then(() => {
         checkUserLoginStatus();
@@ -18,7 +19,7 @@ function loadNavbar() {
 
 async function checkUserLoginStatus() {
     try {
-        const response = await fetch('http://192.168.0.251/api/check_session.php');
+        const response = await fetch(`${BASE_URL}check_session.php`);
         const data = await response.json();
         
         if (data.logged_in) {

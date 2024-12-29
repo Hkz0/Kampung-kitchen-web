@@ -1,3 +1,4 @@
+import { BASE_URL } from "config.js";
 document.getElementById('upload-recipe-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -12,7 +13,7 @@ document.getElementById('upload-recipe-form').addEventListener('submit', async f
     const ethnicId = document.getElementById('ethnic-id').value;
 
     try {
-        const response = await fetch('http://192.168.0.251/api/upload_recipe.php', {
+        const response = await fetch(`${BASE_URL}upload_recipe.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

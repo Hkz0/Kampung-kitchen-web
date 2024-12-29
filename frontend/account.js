@@ -1,11 +1,14 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     loadUserData();
     setupEventListeners();
 });
 
+import { BASE_URL } from "config.js";
+
 async function loadUserData() {
     try {
-        const response = await fetch('192.168.251/api/user_data.php');
+        const response = await fetch(`${BASE_URL}user_data.php`);
         const data = await response.json();
 
         if (data.success) {
@@ -31,7 +34,7 @@ function displayUserData(user) {
 
 async function loadUserRecipes() {
     try {
-        const response = await fetch('192.168.0.251/api/user_recipes.php', {
+        const response = await fetch(`${BASE_URL}user_recipes.php`, {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -119,7 +122,7 @@ function setupEventListeners() {
         logoutBtn.addEventListener('click', async function(event) {
             event.preventDefault();
             try {
-                const response = await fetch('192.168.0.251/api/logout.php', {
+                const response = await fetch(`${BASE_URL}logout.php`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -147,7 +150,7 @@ async function saveProfileChanges() {
     const email = document.getElementById('edit-email').value;
 
     try {
-        const response = await fetch('192.168.0.251/api/update_profile.php', {
+        const response = await fetch(`${BASE_URL}update_profile.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -182,7 +185,7 @@ async function changePassword() {
     }
 
     try {
-        const response = await fetch('192.168.0.251/api/change_password.php', {
+        const response = await fetch(`${BASE_URL}change_password.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -211,7 +214,7 @@ async function changePassword() {
 
 function editRecipe(recipeId) {
     // Fetch the recipe details and populate the form
-    fetch(`../api/recipe_details.php?recipe_id=${recipeId}`)
+    fetch(`${BASE_URL}recipe_details.php?recipe_id=${recipeId}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById('edit-recipe-id').value = data.recipe_id;
@@ -246,7 +249,7 @@ document.getElementById('save-recipe-btn').addEventListener('click', async funct
     const ethnicId = document.getElementById('edit-ethnic-id').value;
 
     try {
-        const response = await fetch('http://192.168.0.251/api/edit_recipe.php', {
+        const response = await fetch(`${BASE_URL}edit_recipe.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -286,7 +289,7 @@ function deleteRecipe(recipeId) {
         return;
     }
 
-    fetch('http://192.168.0.251/api/delete_recipe.php', {
+    fetch(`${BASE_URL}delete_recipe.php`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
