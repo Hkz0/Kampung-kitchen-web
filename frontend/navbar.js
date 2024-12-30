@@ -19,7 +19,12 @@ function loadNavbar() {
 
 async function checkUserLoginStatus() {
     try {
-        const response = await fetch(`${BASE_URL}check_session.php`);
+        const response = await fetch(`${BASE_URL}check_session.php`, {
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
         const data = await response.json();
         
         if (data.logged_in) {
