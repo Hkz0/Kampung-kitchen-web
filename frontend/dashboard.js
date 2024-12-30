@@ -37,8 +37,8 @@ function displayRecipes(data) {
                     <img src='${recipe.image_url}' class='card-img-top' alt='Recipe Image' style='height: 200px; object-fit: cover;'>
                 </a>
                 <div class='card-body'>
-                    <h5 class='card-title'>${recipe.name}</h5>
-                    <p class='card-text'>${recipe.description}</p>
+                    <h5 class='card-title text-dark'>${recipe.name}</h5>
+                    <p class='card-text text-dark'>${recipe.description}</p>
                     <p class='small'>
                         Prep Time: ${recipe.prep_time} mins | Cook Time: ${recipe.cook_time} mins<br>
                         Servings: ${recipe.servings}
