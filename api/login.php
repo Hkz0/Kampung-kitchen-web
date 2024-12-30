@@ -1,6 +1,9 @@
 <?php
-include 'cors_headers.php';
+require_once __DIR__ . '/error_reporting.php';
+require_once __DIR__ . '/cors_headers.php';
 include '../config/connect.php';
+
+session_start();
 
 $data = json_decode(file_get_contents('php://input'), true);
 $username = $data['username'];
@@ -15,14 +18,16 @@ $stmt->fetch();
 
 $response = [];
 if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
-    session_start();
     $_SESSION['user_id'] = $user_id;
     $_SESSION['username'] = $username;
     $response['success'] = true;
+    $response['message'] = 'Login successful';
 } else {
     $response['success'] = false;
     $response['message'] = 'Invalid username or password';
 }
 
 echo json_encode($response);
+$stmt->close();
+$conn->close();
 ?>
