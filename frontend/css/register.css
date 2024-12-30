@@ -1,0 +1,23 @@
+.register-text{
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(42, 106, 41);
+    text-align: center;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.form-group{
+    color: rgb(203, 186, 39);
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.form-control{
+    background-color: black;
+}
+
+.mt-3{
+    color: black;
+}
