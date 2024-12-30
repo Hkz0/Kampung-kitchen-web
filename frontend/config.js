@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://kampungkitchen.hkz0.duckdns.org/api/';
+export const BASE_URL = 'http://http://across-phantom.gl.at.ply.gg:51550/kampungKitchen/api/';

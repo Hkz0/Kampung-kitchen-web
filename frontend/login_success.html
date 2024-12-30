@@ -12,12 +12,10 @@
         <p class="text-center">Welcome, <span id="username"></span>!</p>
         <a href="dashboard.html" class="btn btn-primary d-block mx-auto">Go to Dashboard</a>
     </div>
-    <script type="module">
-        import { BASE_URL } from './config.js';
-
+    <script>
         document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const response = await fetch(`${BASE_URL}get_username.php`);
+                const response = await fetch('../api/get_username.php');
                 const data = await response.json();
                 if (data.success) {
                     document.getElementById('username').textContent = data.username;
