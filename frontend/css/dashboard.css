@@ -1,6 +1,23 @@
-.my-custom {
-    padding: 20px;
-    background-color: #f8f9fa;
+.home-page{
+    color: rgba(155, 0, 0, 0.795);
+    text-align: center;
+    font-size: 70px;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+
+
 }
 
-/* Add any other custom styles you need */ 
+ .discover-text{
+    font-family: 'Courier New', Courier, monospacet;
+    color: rgb(238, 154, 75);
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+ }
+
+.me-2{
+    background-color: rgb(0, 0, 0);
+    opacity: 0.3;
+}
