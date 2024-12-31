@@ -15,7 +15,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
             try {
-                const response = await fetch(`http://192.168.0.251/kampungKitchen/api/get_username.php`); // code racist "https://"
+                const response = await fetch(`../api/get_username.php`); // code racist "https://"
                 const data = await response.json();
                 if (data.success) {
                     document.getElementById('username').textContent = data.username;
