@@ -82,13 +82,22 @@ function displayUserRecipes(recipes) {
                     <h5 class="card-title">${recipe.title}</h5>
                     <p class="card-text">${recipe.description || ''}</p>
                     <a href="recipe.html?recipe_id=${recipe.id}" class="btn btn-primary">View Recipe</a>
-                    <button class="btn btn-warning mt-2" onclick="editRecipe(${recipe.id})">Edit</button>
-                    <button class="btn btn-danger mt-2" onclick="deleteRecipe(${recipe.id})">Delete</button>
+                    <button class="btn btn-warning mt-2 edit-recipe-btn" data-recipe-id="${recipe.id}">Edit</button>
+                    <button class="btn btn-danger mt-2 delete-recipe-btn" data-recipe-id="${recipe.id}">Delete</button>
                 </div>
             </div>
         `;
         
         container.appendChild(col);
+    });
+
+    // Add event listeners for edit and delete buttons
+    document.querySelectorAll('.edit-recipe-btn').forEach(button => {
+        button.addEventListener('click', () => editRecipe(button.dataset.recipeId));
+    });
+
+    document.querySelectorAll('.delete-recipe-btn').forEach(button => {
+        button.addEventListener('click', () => deleteRecipe(button.dataset.recipeId));
     });
 }
 
