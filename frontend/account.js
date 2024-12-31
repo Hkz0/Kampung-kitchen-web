@@ -142,6 +142,55 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Add save recipe event listener
+    document.getElementById('save-recipe-btn').addEventListener('click', async function() {
+        const recipeId = document.getElementById('edit-recipe-id').value;
+        const name = document.getElementById('edit-name').value;
+        const description = document.getElementById('edit-description').value;
+        const instructions = document.getElementById('edit-instructions').value;
+        const ingredients = document.getElementById('edit-ingredients').value;
+        const prepTime = document.getElementById('edit-prep-time').value;
+        const cookTime = document.getElementById('edit-cook-time').value;
+        const servings = document.getElementById('edit-servings').value;
+        const imageUrl = document.getElementById('edit-image-url').value;
+        const ethnicId = document.getElementById('edit-ethnic-id').value;
+
+        try {
+            const response = await fetch(`${BASE_URL}edit_recipe.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    recipe_id: recipeId,
+                    name,
+                    description,
+                    instructions,
+                    ingredients,
+                    prep_time: parseInt(prepTime),
+                    cook_time: parseInt(cookTime),
+                    servings: parseInt(servings),
+                    image_url: imageUrl,
+                    ethnic_id: ethnicId ? parseInt(ethnicId) : null
+                }),
+                credentials: 'include'
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert('Recipe updated successfully');
+                loadUserRecipes(); // Refresh the recipes list
+                bootstrap.Modal.getInstance(document.getElementById('editRecipeModal')).hide();
+            } else {
+                alert('Failed to update recipe: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error updating recipe:', error);
+            alert('Error updating recipe. Please try again.');
+        }
+    });
 }
 
 async function saveProfileChanges() {
