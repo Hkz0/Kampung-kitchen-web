@@ -4,20 +4,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const ethnicId = urlParams.get('ethnic_id');
 
-
     if (ethnicId) {
         fetch(`${BASE_URL}ethnic_recipe_cards.php?ethnic_id=${ethnicId}`)
             .then(response => response.json())
             .then(data => {
-                // Display ethnic name and description
+                // Display ethnic name and description if data exists
+                const ethnicNameElement = document.getElementById('ethnic-name');
+                const ethnicDescriptionElement = document.getElementById('ethnic-description');
+                
                 if (data.length > 0) {
-                    document.getElementById('ethnic-name').textContent = data[0].ethnic_name;
-                    document.getElementById('ethnic-description').textContent = data[0].ethnic_description;
+                    if (ethnicNameElement) {
+                        ethnicNameElement.textContent = data[0].ethnic_name;
+                    }
+                    if (ethnicDescriptionElement) {
+                        ethnicDescriptionElement.textContent = data[0].ethnic_description;
+                    }
+                    displayRecipes(data);
+                } else {
+                    // Handle case when no recipes are found
+                    if (ethnicNameElement) {
+                        ethnicNameElement.textContent = "No recipes found";
+                    }
+                    if (ethnicDescriptionElement) {
+                        ethnicDescriptionElement.textContent = "There are currently no recipes in this category.";
+                    }
                 }
-                displayRecipes(data);
             })
             .catch(error => {
                 console.error('Error fetching ethnic recipes:', error);
+                // Handle error state
+                const container = document.getElementById('recipe-container');
+                if (container) {
+                    container.innerHTML = '<div class="col-12 text-center"><p class="text-danger">Error loading recipes. Please try again later.</p></div>';
+                }
             });
     }
 
