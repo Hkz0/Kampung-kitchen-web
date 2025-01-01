@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://kampung-kitchen.hkz0.duckdns.org/api/';
+export const BASE_URL = 'end-bangladesh.gl.at.ply.gg:56189/api/';
