@@ -30,20 +30,17 @@ function displayRecipes(data) {
 
     data.forEach(recipe => {
         const recipeDiv = document.createElement('div');
-        recipeDiv.classList.add('col-md-4', 'mb-4');
+        recipeDiv.classList.add('col-md-3', 'mb-4');
         recipeDiv.innerHTML = `
-            <div class='card'>
-                <a href='recipe.html?recipe_id=${encodeURIComponent(recipe.recipe_id)}'>
-                    <img src='${recipe.image_url}' class='card-img-top' alt='Recipe Image' style='height: 200px; object-fit: cover;'>
+            <div class='recipe-card'>
+                <a href='recipe.html?recipe_id=${encodeURIComponent(recipe.recipe_id)}' class="recipe-link">
+                    <div class="recipe-image-container">
+                        <img src='${recipe.image_url}' alt='${recipe.name}'>
+                    </div>
+                    <div class='recipe-name'>
+                        <h5>${recipe.name}</h5>
+                    </div>
                 </a>
-                <div class='card-body'>
-                    <h5 class='card-title text-dark'>${recipe.name}</h5>
-                    <p class='card-text text-dark'>${recipe.description}</p>
-                    <p class='small'>
-                        Prep Time: ${recipe.prep_time} mins | Cook Time: ${recipe.cook_time} mins<br>
-                        Servings: ${recipe.servings}
-                    </p>
-                </div>
             </div>
         `;
         container.appendChild(recipeDiv);
