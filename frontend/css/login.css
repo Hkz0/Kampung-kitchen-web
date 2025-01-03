@@ -1,24 +1,33 @@
-.login-text{
-    font-size: 70px;
-    color: rgb(33, 58, 159);
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    font-weight: bold;
+/* Set the background image for the entire page */
+.bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://pbs.twimg.com/media/FAbFgOjVQAsWL7W.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure the background stays behind content */
 }
 
-.form-group{
+/* Login box styling */
+.login-box {
+    background-color: rgba(255, 255, 255, 0.8); /* White with slight transparency */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for form groups */
+.form-group {
     color: #333;
     font-size: 16px;
     font-family: inherit;
     font-weight: 500;
 }
 
-.login-box {
-    background-color: #fff !important;
-    border-radius: 10px;
-    border: 1px solid #dee2e6;
-}
-
+/* Input fields styling */
 .form-control {
     background-color: #fff;
     border: 1px solid #ced4da;
@@ -29,10 +38,14 @@
     background-color: #fff;
 }
 
+/* Button styling */
 .btn-primary {
     padding: 10px;
+    background-color: black;
+    border-color: black;
 }
 
+/* Full height and positioning for the container */
 .position-relative {
     min-height: 100vh;
     position: relative;
@@ -46,26 +59,19 @@
     z-index: 2;
 }
 
-.background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../img/login-background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
+/* Additional styling for login text */
+.login-text {
+    font-size: 70px;
+    color: rgb(33, 58, 159);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-weight: bold;
 }
 
-/* Add a subtle overlay to make the login box more readable */
-.background-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+/* Center the content vertically and horizontally */
+.vh-100 {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
