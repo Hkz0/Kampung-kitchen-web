@@ -7,7 +7,7 @@ body {
 }
 
 .mb-4{
-    color: rgb(117, 38, 38);
+    color: rgb(152, 50, 50);
     font-family: 'Playfair Display', serif;
     font-size: 30px;
     font-weight: bold;
@@ -89,8 +89,9 @@ body {
 
 .recipe-card .card-text {
     color: #666;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 400;
 }
 
 /* Ethnic info section styling */

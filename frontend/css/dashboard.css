@@ -83,8 +83,9 @@ body {
 
 .recipe-card .card-text {
     color: #666;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 400;
 }
 
 /* Background overlay */
