@@ -7,22 +7,21 @@ body {
 }
 
 .mb-4{
-    color: rgb(152, 50, 50);
+    color: rgb(72, 50, 152);
     font-family: 'Playfair Display', serif;
     font-size: 30px;
     font-weight: bold;
 }
 
 /* Main heading styling */
-.ethnic-recipes {
+.makan{
     font-size: 70px;
     font-weight: 700;
-    color: rgb(183, 14, 14);
+    color: rgb(243, 71, 220);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
     font-family: 'Playfair Display', serif;
 }
-
 /* Search section styling */
 .container.mt-5 {
     margin-bottom: 3rem;
@@ -103,8 +102,12 @@ body {
     max-width: 800px;
 }
 
+.mt-4{
+    color: rgb(50, 87, 105);
+}
+
 #ethnic-name {
-    color: white;
+    color: rgb(200, 35, 35);
     font-size: 2rem;
     margin-bottom: 1rem;
 }

@@ -95,8 +95,8 @@ function displayRecipes(data) {
                 </a>
                 <div class='card-body'>
                     <h5 class='card-title'>${recipe.name}</h5>
-                    <p class='card-text'>${recipe.description}</p>
-                    <p class='small'>
+                    <p class='card-text small'>${recipe.description}</p>
+                    <p class='small text-muted'>
                         Prep Time: ${recipe.prep_time} mins | Cook Time: ${recipe.cook_time} mins<br>
                         Servings: ${recipe.servings}
                     </p>
