@@ -1,0 +1,166 @@
+/* General styling */
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Back button styling */
+.btn-secondary {
+    background-color: #4490d3;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Recipe title styling */
+.recipe-title {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+/* Author and timestamp styling */
+.text-muted {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Recipe image styling */
+.recipe-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Recipe details section */
+.recipe-details {
+    background-color: #abbfd2;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+}
+
+.recipe-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.recipe-details strong {
+    color: #2c3e50;
+}
+
+/* Section headings */
+h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+/* Ingredients list styling */
+.list-group {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.list-group-item {
+    border: none;
+    background-color: #f8f9fa;
+    padding: 0.8rem 1.5rem;
+    margin-bottom: 5px;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef;
+}
+
+/* Instructions styling */
+#instructions-container {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+#instructions-container p {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #dee2e6;
+}
+
+/* Ethnic section styling */
+.recipe-ethnic {
+    background-color: #c6cfda;
+    padding: 1rem;
+    border-radius:10px;
+    margin-top: 5rem;
+    font-weight: bold;
+}
+
+#ethnic-name {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .recipe-title {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .recipe-details p {
+        font-size: 1rem;
+    }
+}
+
+/* Animation for content loading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container > * {
+    animation: fadeIn 0.5s ease-out forwards;
+} 
