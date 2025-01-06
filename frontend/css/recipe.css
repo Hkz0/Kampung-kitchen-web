@@ -5,14 +5,27 @@ body {
     color: #333;
 }
 
+
+
+/* Content wrapper */
+.content-wrapper {
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Container styling */
 .container {
     max-width: 900px;
     padding: 2rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin-top: 2rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Back button styling */
