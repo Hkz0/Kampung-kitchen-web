@@ -22,4 +22,30 @@
 
 .modal-header {
     background-color: #f8f9fa;
+}
+
+.account-box {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+    width: 80%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem !important;
+}
+
+.col-md-8 {
+    width: 80%;
+    max-width: 1200px;
+}
+
+@media (max-width: 768px) {
+    .account-box {
+        width: 85%;
+        padding: 1rem !important;
+    }
+    
+    .col-md-8 {
+        width: 85%;
+    }
 } 

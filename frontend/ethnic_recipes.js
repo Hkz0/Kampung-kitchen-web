@@ -98,14 +98,6 @@ function displayRecipes(data) {
                         <h5>${recipe.name}</h5>
                     </div>
                 </a>
-                <div class='card-body'>
-                    <h5 class='card-title'>${recipe.name}</h5>
-                    <p class='card-text small'>${recipe.description}</p>
-                    <p class='small text-muted'>
-                        Prep Time: ${recipe.prep_time} mins | Cook Time: ${recipe.cook_time} mins<br>
-                        Servings: ${recipe.servings}
-                    </p>
-                </div>
             </div>
         `;
         container.appendChild(recipeDiv);
