@@ -15,59 +15,60 @@
     <div class="position-relative">
         <img src="img/upload.jpg" class="img-fluid position-absolute w-100 h-100" alt="Background" style="object-fit: cover; z-index: -1;">
         <div class="container text-center text-white py-5">
-
-    <div class="container mt-5">
-        <h2 class="upload">Upload Recipe</h2><br>
-        <form id="upload-recipe-form">
-            <div class="mb-3">
-                <label for="name" class="form-label">Recipe Name</label>
-                <input type="text" class="form-control" id="name" required>
+            <div class="form-box">
+                <h2 class="upload">Upload Recipe</h2><br>
+                <form id="upload-recipe-form">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Recipe Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instructions" class="form-label">Instructions</label>
+                        <textarea class="form-control" id="instructions" rows="5" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ingredients" class="form-label">Ingredients</label>
+                        <textarea class="form-control" id="ingredients" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="prep-time" class="form-label">Preparation Time (mins)</label>
+                        <input type="number" class="form-control" id="prep-time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cook-time" class="form-label">Cooking Time (mins)</label>
+                        <input type="number" class="form-control" id="cook-time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="servings" class="form-label">Servings</label>
+                        <input type="number" class="form-control" id="servings" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image-url" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="image-url" required>
+                    </div>
+                    <div class="mb-3">
+                        <img id="image-preview" src="" alt="Image Preview" class="img-fluid" style="max-height: 200px; display: none;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ethnic-id" class="form-label">Ethnic Group</label>
+                        <select class="form-control" id="ethnic-id" required>
+                            <option value="">Select Ethnic Group</option>
+                            <option value="1">Melayu</option>
+                            <option value="2">Cina</option>
+                            <option value="3">India</option>
+                            <option value="4">Sabah</option>
+                            <option value="5">Sarawak</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Recipe</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="instructions" class="form-label">Instructions</label>
-                <textarea class="form-control" id="instructions" rows="5" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredients</label>
-                <textarea class="form-control" id="ingredients" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="prep-time" class="form-label">Preparation Time (mins)</label>
-                <input type="number" class="form-control" id="prep-time" required>
-            </div>
-            <div class="mb-3">
-                <label for="cook-time" class="form-label">Cooking Time (mins)</label>
-                <input type="number" class="form-control" id="cook-time" required>
-            </div>
-            <div class="mb-3">
-                <label for="servings" class="form-label">Servings</label>
-                <input type="number" class="form-control" id="servings" required>
-            </div>
-            <div class="mb-3">
-                <label for="image-url" class="form-label">Image URL</label>
-                <input type="text" class="form-control" id="image-url" required>
-            </div>
-            <div class="mb-3">
-                <img id="image-preview" src="" alt="Image Preview" class="img-fluid" style="max-height: 200px; display: none;">
-            </div>
-            <div class="mb-3">
-                <label for="ethnic-id" class="form-label">Ethnic Group</label>
-                <select class="form-control" id="ethnic-id" required>
-                    <option value="">Select Ethnic Group</option>
-                    <option value="1">Melayu</option>
-                    <option value="2">Cina</option>
-                    <option value="3">India</option>
-                    <option value="4">Sabah</option>
-                    <option value="5">Sarawak</option>
-                    <!-- Add more options as needed -->
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Upload Recipe</button>
-        </form>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="upload_recipe.js"></script>
