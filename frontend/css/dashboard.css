@@ -3,6 +3,26 @@ body {
     background-color: #f8f9fa;
 }
 
+.texter {
+    color: #d9a1a1;
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.texter2 {
+    color: #d58a8a;
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: rgba(188, 176, 176, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+}
+
 /* Homepage heading styles */
 .home-page {
     font-size: 3rem;

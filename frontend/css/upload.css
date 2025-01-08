@@ -39,6 +39,9 @@ body {
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-weight: bold;
+    background-color: rgba(188, 176, 176, 0.5);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 /* Form elements styling */
