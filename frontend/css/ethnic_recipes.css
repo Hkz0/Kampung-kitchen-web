@@ -120,8 +120,8 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .ethnic-recipes {
-        font-size: 2.5rem;
+    .makan {
+        font-size: 50px;
     }
     
     #search-form {
@@ -132,5 +132,19 @@ body {
     #search-form button {
         border-radius: 25px;
         margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .makan {
+        font-size: 40px;
+    }
+
+    #ethnic-name {
+        font-size: 1.5rem;
+    }
+
+    #ethnic-description {
+        font-size: 1rem;
     }
 }

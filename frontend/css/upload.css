@@ -95,13 +95,23 @@ body {
     .upload {
         font-size: 2rem;
     }
-    
+
     .container {
         padding: 0 15px;
     }
-    
+
     .form-control {
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .upload {
+        font-size: 1.5rem;
+    }
+
+    .form-control {
+        font-size: 0.8rem;
     }
 }
 

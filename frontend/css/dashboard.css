@@ -117,6 +117,14 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .texter {
+        font-size: 36px;
+    }
+
+    .texter2 {
+        font-size: 28px;
+    }
+
     .home-page {
         font-size: 2rem;
     }
@@ -127,6 +135,29 @@ body {
     
     #search-form {
         width: 90%;
+    }
+
+    .text-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .texter {
+        font-size: 28px;
+    }
+
+    .texter2 {
+        font-size: 24px;
+    }
+
+    .text-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .image-container img {
+        filter: brightness(40%);
     }
 }
 

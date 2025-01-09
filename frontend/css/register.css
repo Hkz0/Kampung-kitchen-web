@@ -34,3 +34,32 @@
     font-size: 1.1rem;
     padding: 5px 0;  /* Add some vertical padding */
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .register-text {
+        font-size: 50px;
+    }
+
+    .form-group {
+        font-size: 18px;
+    }
+
+    .texter {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .register-text {
+        font-size: 40px;
+    }
+
+    .form-group {
+        font-size: 16px;
+    }
+
+    .texter {
+        font-size: 0.9rem;
+    }
+}

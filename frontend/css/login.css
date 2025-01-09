@@ -27,4 +27,33 @@
     padding: 5px 0;  /* Add some vertical padding */
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mb-4 {
+        font-size: 36px;
+    }
+
+    .texter {
+        font-size: 1rem;
+    }
+
+    .login-box {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mb-4 {
+        font-size: 28px;
+    }
+
+    .texter {
+        font-size: 0.9rem;
+    }
+
+    .login-box {
+        padding: 1.5rem;
+    }
+}
+
 
