@@ -12,6 +12,12 @@ document.getElementById('upload-recipe-form').addEventListener('submit', async f
     const imageUrl = document.getElementById('image-url').value;
     const ethnicId = document.getElementById('ethnic-id').value;
 
+    // Validate image URL length
+    if (imageUrl.length > 255) { // Assuming the database limit is 255
+        alert('Image URL is too long. Please use a shorter URL.');
+        return;
+    }
+
     try {
         const response = await fetch(`${BASE_URL}upload_recipe.php`, {
             method: 'POST',
