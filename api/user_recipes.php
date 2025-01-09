@@ -16,8 +16,8 @@ if (!isset($_SESSION['user_id'])) {
 try {
     $user_id = $_SESSION['user_id'];
     
-    // Update the query to match your database structure
-    $stmt = $conn->prepare("SELECT recipe_id, name as title, description, image_url 
+    // Update the query to include created_at
+    $stmt = $conn->prepare("SELECT recipe_id, name as title, description, image_url, created_at 
                            FROM recipe 
                            WHERE user_id = ?
                            ORDER BY created_at DESC");
@@ -32,7 +32,8 @@ try {
             'id' => $row['recipe_id'],
             'title' => $row['title'],
             'description' => $row['description'],
-            'image_url' => $row['image_url']
+            'image_url' => $row['image_url'],
+            'created_at' => $row['created_at']
         ];
     }
     

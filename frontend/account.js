@@ -68,27 +68,35 @@ function displayUserRecipes(recipes) {
         return;
     }
 
+    // Create a row to hold the recipes
+    const row = document.createElement('div');
+    row.className = 'row row-cols-1 row-cols-md-3 g-4';
+    container.appendChild(row);
+
     recipes.forEach(recipe => {
         const col = document.createElement('div');
-        col.className = 'col-md-4 mb-3';
+        col.className = 'col';
         
         col.innerHTML = `
             <div class="card h-100">
                 <img src="${recipe.image_url || 'placeholder.jpg'}" 
                      class="card-img-top" 
                      alt="${recipe.title}"
+                     style="height: 200px; object-fit: cover;"
                      onerror="this.src='placeholder.jpg'">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${recipe.title}</h5>
-                    <p class="card-text">${recipe.description || ''}</p>
-                    <a href="recipe.html?recipe_id=${recipe.id}" class="btn btn-primary">View Recipe</a>
-                    <button class="btn btn-warning mt-2 edit-recipe-btn" data-recipe-id="${recipe.id}">Edit</button>
-                    <button class="btn btn-danger mt-2 delete-recipe-btn" data-recipe-id="${recipe.id}">Delete</button>
+                    <p class="created-at text-muted">Created on: ${new Date(recipe.created_at).toLocaleDateString()}</p>
+                    <div class="mt-auto">
+                        <a href="recipe.html?recipe_id=${recipe.id}" class="btn btn-primary w-100 mb-2">View Recipe</a>
+                        <button class="btn btn-warning w-100 mb-2 edit-recipe-btn" data-recipe-id="${recipe.id}">Edit</button>
+                        <button class="btn btn-danger w-100 delete-recipe-btn" data-recipe-id="${recipe.id}">Delete</button>
+                    </div>
                 </div>
             </div>
         `;
         
-        container.appendChild(col);
+        row.appendChild(col);
     });
 
     // Add event listeners for edit and delete buttons
