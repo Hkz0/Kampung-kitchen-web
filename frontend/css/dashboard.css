@@ -17,9 +17,9 @@ body {
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-family: 'Courier New', Courier, monospace;
-    text-align: center;
     background-color: rgba(188, 176, 176, 0.5);
     border-radius: 10px;
+    text-align: center;
     padding: 10px;
 }
 
