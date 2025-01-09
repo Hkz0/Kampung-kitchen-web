@@ -18,13 +18,13 @@ function loadRecipe() {
             document.getElementById('prep-time').textContent = data.prep_time;
             document.getElementById('cook-time').textContent = data.cook_time;
             document.getElementById('servings').textContent = data.servings;
-            document.getElementById('ingredients-list').textContent = data.ingredients;
-            document.getElementById('instructions-container').textContent = data.instructions;
+            //document.getElementById('ingredients-list').textContent = data.ingredients;
+            //document.getElementById('instructions-container').textContent = data.instructions;
             document.getElementById('ethnic-name').textContent = data.ethnic_name || 'Not specified';
             const createdDate = new Date(data.created_at);
             document.getElementById('created-at').textContent = createdDate.toLocaleDateString();
 
-            /* to be fixed
+            
             const ingredientsList = document.getElementById('ingredients-list');
             data.ingredients.forEach(ingredient => {
                 const li = document.createElement('li');
@@ -39,7 +39,7 @@ function loadRecipe() {
                 instructionParagraph.textContent = instruction;
                 instructionsContainer.appendChild(instructionParagraph);
             });
-            */
+            
         })
         .catch(error => {
             console.error('Error loading the recipe:', error);
