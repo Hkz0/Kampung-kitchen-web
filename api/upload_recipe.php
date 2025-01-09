@@ -14,6 +14,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $data = json_decode(file_get_contents('php://input'), true);
+
+if ($data === null) {
+    $response['message'] = 'Invalid JSON input';
+    echo json_encode($response);
+    exit;
+}
+
 $user_id = $_SESSION['user_id'];
 $name = $data['name'] ?? '';
 $description = $data['description'] ?? '';
@@ -25,14 +32,18 @@ $servings = $data['servings'] ?? 0;
 $image_url = $data['image_url'] ?? '';
 $ethnic_id = $data['ethnic_id'] ?? null;
 
-$stmt = $conn->prepare("INSERT INTO recipe (name, description, instructions, ingredients, prep_time, cook_time, servings, user_id, image_url, ethnic_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssiiisss", $name, $description, $instructions, $ingredients, $prep_time, $cook_time, $servings, $user_id, $image_url, $ethnic_id);
+try {
+    $stmt = $conn->prepare("INSERT INTO recipe (name, description, instructions, ingredients, prep_time, cook_time, servings, user_id, image_url, ethnic_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssiiisss", $name, $description, $instructions, $ingredients, $prep_time, $cook_time, $servings, $user_id, $image_url, $ethnic_id);
 
-if ($stmt->execute()) {
-    $response['success'] = true;
-    $response['message'] = 'Recipe uploaded successfully';
-} else {
-    $response['message'] = 'Error uploading recipe';
+    if ($stmt->execute()) {
+        $response['success'] = true;
+        $response['message'] = 'Recipe uploaded successfully';
+    } else {
+        $response['message'] = 'Error executing query: ' . $stmt->error;
+    }
+} catch (Exception $e) {
+    $response['message'] = 'Exception: ' . $e->getMessage();
 }
 
 echo json_encode($response);
